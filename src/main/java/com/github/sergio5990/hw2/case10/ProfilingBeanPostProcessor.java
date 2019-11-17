@@ -53,20 +53,23 @@ public class ProfilingBeanPostProcessor implements BeanPostProcessor {
                     if (methods.contains(method)) {
 
                         final LocalDateTime before = LocalDateTime.now();
-                        System.out.println("before method" + before);
+                        System.out.println("before method: " + before);
 
-                        final Object result = method.invoke(bean, methodInvocation.getArguments());
+                        Object result = method.invoke(bean, methodInvocation.getArguments());
 
                         final LocalDateTime after = LocalDateTime.now();
-                        System.out.println("after method" + after);
+                        System.out.println("after method: " + after);
 
-                        System.out.println("time:" + Duration.between(before, after).toMillis());
+                        System.out.println("time:" + Duration.between(before, after).toMillis() + " ms");
+                        return result;
+                    } else {
+                        return method.invoke(bean, methodInvocation.getArguments());
                     }
-                    return method.invoke(bean, methodInvocation.getArguments());
                 }
             });
             return proxyFactory.getProxy();
+        } else {
+            return bean;
         }
-        return bean;
     }
 }

@@ -17,7 +17,22 @@ public class ServiceCase10 {
         }
     }
 
+    @Profiling
+    public void execute1(){
+        try {
+            Thread.sleep(ThreadLocalRandom.current().nextInt(200));
+            System.out.println("work");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void execute2(){
-        System.out.println("2");
+        try {
+            Thread.sleep(ThreadLocalRandom.current().nextInt(200));
+            System.out.println("work 2");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

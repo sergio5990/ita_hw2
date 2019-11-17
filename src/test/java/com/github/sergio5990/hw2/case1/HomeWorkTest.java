@@ -125,7 +125,7 @@ class HomeWorkTest {
     }
 
     @Test
-    public void case10Test() throws IOException {
+    public void case10Test() {
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.scan("com.github.sergio5990.hw2.case10");
         context.refresh();
@@ -135,7 +135,10 @@ class HomeWorkTest {
         assertNotNull(bean);
         bean.execute();
         System.out.println("___________________");
+        bean.execute1();
+        System.out.println("___________________");
         bean.execute2();
+
     }
 
 }
