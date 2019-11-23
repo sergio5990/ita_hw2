@@ -21,7 +21,7 @@ public class ServiceCase10 {
     public void execute1(){
         try {
             Thread.sleep(ThreadLocalRandom.current().nextInt(200));
-            System.out.println("work");
+            System.out.println("work 1");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
